@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Travelogue App</string>
+    <string name="greeting">Welcome to Your Personal Travel Assistant!</string>
+    <string name="places_feature_title">Places to Visit</string>
+    <string name="bag_feature_title">Travel Bag Creator</string>
+    <string name="foods_feature_title">Must-Try Foods</string>
+    <string name="cost_feature_title">Estimated Travel Costs</string>
+</resources>
