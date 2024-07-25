@@ -26,8 +26,7 @@ class GenerateViewModel @Inject constructor(
             val prompt = createPrompt(travelInfo)
             val travelResponse = travelGuideRepository.generateTravelResponse(prompt)
             val updatedTravelResponse = updateTravelResponseWithImages(travelResponse)
-            _generateState.value =
-                GenerateState(screenState = ScreenState.SUCCESS, data = updatedTravelResponse)
+            _generateState.value = GenerateState(screenState = ScreenState.SUCCESS, data = updatedTravelResponse)
         } catch (e: Exception) {
             _generateState.value =
                 GenerateState(screenState = ScreenState.ERROR, error = e.localizedMessage.orEmpty())
@@ -77,6 +76,10 @@ class GenerateViewModel @Inject constructor(
         ${jsonSchemas.filterNotNull().joinToString(separator = " ")} 
         Return a {${returnFields.filterNotNull().joinToString(separator = ", ")}}""".trimIndent()
         return "$basePrompt $featuresPrompt. $jsonSchemaPrompt"
+    }
+
+    fun resetState() {
+        _generateState.value = GenerateState()
     }
 
 }

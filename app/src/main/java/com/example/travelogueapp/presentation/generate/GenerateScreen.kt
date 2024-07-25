@@ -17,6 +17,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -52,6 +53,11 @@ fun GenerateScreen(
     var travelDuration by remember { mutableIntStateOf(0) }
     val selectedFeatures = remember { mutableStateListOf<FeatureInfo>() }
     var showDatePicker by remember { mutableStateOf(false) }
+    DisposableEffect(Unit) {
+        onDispose {
+            viewModel.resetState()
+        }
+    }
     when (state.screenState) {
         ScreenState.INITIAL -> {
             Column(
